@@ -3,10 +3,10 @@ import shutil
 import utils
 import variables
 
-def draw():
-	clear()
+def draw(player):
+	clearAll()
 	buildFrame()
-	cursorTo(variables.pos_x, variables.pos_y, True)
+	cursorTo(player['pos_x'], player['pos_y'], True)
 	utils.doPrint('A')
 	sys.stdout.flush()
 

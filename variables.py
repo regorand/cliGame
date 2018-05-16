@@ -1,4 +1,6 @@
-ticks = 30
+ticks = 1
+
+airtimeFactor = 3
 
 height = 5
 width = 30
