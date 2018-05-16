@@ -5,6 +5,7 @@ import variables
 
 def draw():
 	clear()
+	buildFrame()
 	cursorTo(variables.pos_x, variables.pos_y, True)
 	utils.doPrint('A')
 	sys.stdout.flush()
@@ -15,6 +16,7 @@ def buildFrame():
 	for i in range(0, variables.height + 1):
 		cursorTo(variables.width + 1, i, True)
 		utils.doPrint('|')
+	sys.stdout.flush()
 
 def cursorTo(x, y, gameCoords):
 	if gameCoords:

@@ -1,6 +1,7 @@
 import getch as getch
 import queue
 import threading
+import os
 
 def getInputBuffer():
 	inputBuffer = ""
@@ -11,17 +12,19 @@ def getInputBuffer():
 	
 def startWorker():
 	worker.start()
-
+	
 def finalize():
 	getch.finalize()
 	
 def worker():
-	while True:
+	while threading.main_thread().is_alive():
 		ch = getch.getch2()
 		if ch is not "":
 			queue.put(ch, True, None)
+	if not threading.main_thread().is_alive():
+		os.system('setterm -cursor on')
+		getch.finalize()
 			
 queue = queue.LifoQueue()
 
 worker = threading.Thread(target=worker)
-worker.daemon = True

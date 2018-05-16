@@ -3,6 +3,7 @@ import variables
 import utils
 import controls
 import engine
+import os
 
 def main():
 	drawing.clearAll()
@@ -12,8 +13,10 @@ def main():
 
 def gameLoop():
 	global pos_x, pos_y, size, ticks
+	os.system('setterm -cursor off')
 	while True:
 		inputBuffer = controls.getInputBuffer()
+		print(inputBuffer, end='')
 		handleInputs(inputBuffer)
 		if variables.pos_x > variables.width:
 			variables.pos_x = 0
