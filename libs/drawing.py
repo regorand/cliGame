@@ -2,8 +2,10 @@ import sys
 import shutil
 from libs import utils
 from libs import variables
+from engine import gamestate
 
-def draw(player):
+def draw(gameState):
+	player = gameState.player
 	clearAll()
 	buildFrame()
 	cursorTo(player['pos_x'], player['pos_y'], True)

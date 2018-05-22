@@ -1,18 +1,13 @@
 #!/usr/bin/python3
-
+from engine import gamestate
+from engine import engine
 from libs import drawing
 from libs import variables
 from libs import utils
 from libs import controls
-from libs import engine
 import os
 
-player = {
-'pos_x': 1,
-'pos_y': 0,
-'isInAir': False,
-'remainingAirTime': 0
-}
+gameState = gamestate.Gamestate()
 
 def main():
 	drawing.clearAll()
@@ -20,17 +15,19 @@ def main():
 	controls.startWorker()
 	gameLoop()
 
+def gameSetup():
+	gamestate.createGameState()
+
 def gameLoop():
-	global pos_x, pos_y, size, ticks
 	os.system('setterm -cursor off')
 	while True:
-		engine.doTick(player)
+		engine.doTick(gameState)
 		inputBuffer = controls.getInputBuffer()
 		print(inputBuffer, end='')
 		handleInputs(inputBuffer)
 		if variables.pos_x > variables.width:
 			variables.pos_x = 0
-		drawing.draw(player)
+		drawing.draw(gameState)
 		utils.WaitNextTick(variables.ticks)
 		
 
@@ -43,12 +40,12 @@ def handleInputs(inputs):
 				utils.exit()
 			if char is 'a':
 				cmdsThisTick.append('a')
-				engine.handleLeft(player)
+				engine.handleLeft(gameState)
 			if char is 'd':
 				cmdsThisTick.append('d')
-				engine.handleRight(player)
+				engine.handleRight(gameState)
 			if char is 'w':
 				cmdsThisTick.append('w')
-				engine.handleJump(player)
+				engine.handleJump(gameState)
 
 main()
