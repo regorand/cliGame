@@ -1,4 +1,4 @@
-import getch as getch
+from libs import getch
 import queue
 import threading
 import os

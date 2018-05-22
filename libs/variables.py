@@ -1,4 +1,4 @@
-ticks = 1
+ticks = 30
 
 airtimeFactor = 3
 

@@ -1,7 +1,7 @@
 import time
-import controls
+from . import controls
 import sys
-import drawing
+from . import drawing
 
 def build(char, amount):
 	res = ''

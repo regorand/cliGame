@@ -1,4 +1,4 @@
-import variables
+from libs import variables
 
 def handleLeft(player):
 	player['pos_x'] -= 1
@@ -16,11 +16,14 @@ def handleJump(player):
 	player['isInAir'] = True
 	
 def doTick(player):
-	print(str(player['isInAir']))
 	if player['isInAir']:
 		if player['remainingAirTime'] == 0:
-			if player['pos_y'] > 0: 
-				player['isInAir'] = False
+			if player['pos_y'] > 0:
 				player['pos_y'] -= 1
+				if player['pos_y'] == 0:
+					player['isInAir'] = False
+				else:
+					player['remainingAirTime'] = int(variables.ticks / variables.airtimeFactor)
+					
 		else:
 			player['remainingAirTime'] -= 1

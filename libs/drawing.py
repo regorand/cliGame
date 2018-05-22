@@ -1,7 +1,7 @@
 import sys
 import shutil
-import utils
-import variables
+from libs import utils
+from libs import variables
 
 def draw(player):
 	clearAll()

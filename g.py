@@ -1,8 +1,10 @@
-import drawing
-import variables
-import utils
-import controls
-import engine
+#!/usr/bin/python3
+
+from libs import drawing
+from libs import variables
+from libs import utils
+from libs import controls
+from libs import engine
 import os
 
 player = {
